@@ -1,0 +1,12 @@
+# Ignorar configuraciones locales y contraseñas
+.env
+*.log
+
+# Ignorar carpetas de dependencias
+node_modules/
+__pycache__/
+dist/
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
