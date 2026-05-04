@@ -5,7 +5,7 @@ CREATE TABLE usuarios (
     id_usuario INT AUTO_INCREMENT PRIMARY KEY,
     email VARCHAR(100) UNIQUE NOT NULL,
     contrasena VARCHAR(255) NOT NULL, --255 carácteres para la función hash
-    rol ENUM('Alumno', 'Docente', 'Administrador') NOT NULL
+    rol ENUM('Docente', 'Administrador') NOT NULL
 );
 
 CREATE TABLE carreras (
@@ -16,12 +16,11 @@ CREATE TABLE carreras (
 );
 
 CREATE TABLE alumnos (
-    id_usuario INT PRIMARY KEY,
+    id_alumno INT PRIMARY KEY,
     nombre_alumno VARCHAR(100) NOT NULL,
     generacion INT NOT NULL,
     id_carrera INT NOT NULL,
     FOREIGN KEY (id_carrera) REFERENCES carreras(id_carrera),
-    FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario) ON DELETE CASCADE
 );
 
 CREATE TABLE materias (
@@ -36,9 +35,9 @@ CREATE TABLE materias (
 
 CREATE TABLE calificaciones (
     id_calificacion INT AUTO_INCREMENT PRIMARY KEY,
-    id_usuario INT NOT NULL,
+    id_alumno INT NOT NULL,
     id_materia INT NOT NULL,
     calificacion INT CHECK (calificacion BETWEEN 0 AND 10),
-    FOREIGN KEY (id_usuario) REFERENCES alumnos(id_usuario) ON DELETE CASCADE,
+    FOREIGN KEY (id_alumno) REFERENCES alumnos(id_alumno) ON DELETE CASCADE,
     FOREIGN KEY (id_materia) REFERENCES materias(id_materia) ON DELETE CASCADE
 );

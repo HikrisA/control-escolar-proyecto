@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DGAE Admin</title>
+    <link rel="stylesheet" href="../../css/global.css">
+    <script src="../../js/mock-data.js" defer></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <header class="main-header">
+            <div class="logo">DGAE</div>
+            <div class="user-info">
+                <span>Admin</span>
+                <a href="../../index.html">
+                    <button class="btn-logout">Cerrar Sesión</button>
+                </a>
+            </div>
+        </header>
+
+        <aside class="sidebar">
+            <nav>
+                <ul>
+                    <li><a href="dashboard.html">Inicio</a></li>
+                    <li><a href="materias.html">Materias</a></li>
+                    <li><a href="usuarios.html" class="active">Usuarios</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="content">
+
+            <h1>Gestión de Usuarios</h1>
+            <p>Administra las cuentas de docentes y administradores del sistema.</p>
+            
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Email</th>
+                        <th>Rol</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="tabla-usuarios-body">
+                </tbody>
+            </table>
+
+            <br>
+
+            <!-- Botón para abrir -->
+            <button class="btn-primary" onclick="openModal()">+ Nuevo Usuario</button>
+
+            <!-- El Modal (oculto por defecto) -->
+            <div id="userModal" class="modal-overlay" style="display:none;">
+                <div class="modal-content">
+                    <h2>Registrar Nuevo Usuario</h2>
+                    <form id="addUserForm">
+                        <input type="text" name="nombre" placeholder="Nombre completo" required>
+                        <input type="email" name="email" placeholder="Correo @comunidad.unam.mx" required>
+                        <select name="rol">
+                            <option value="admin">Administrador</option>
+                            <option value="docente">Docente</option>
+                        </select>
+                        <div class="modal-actions">
+                            <button type="button" onclick="closeModal()">Cancelar</button>
+                            <button type="submit" class="btn-save">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>
